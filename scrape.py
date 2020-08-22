@@ -31,14 +31,12 @@ def extract_questions(question_url):
       sub_content = sub_content[idx + 1:]
       idx = sub_content.index("</div>")
       question = strip_whitespace(sub_content[:idx].replace("\n", "").replace("\t", "").replace("\r", ""))
-      
-      with open(save_filepath, "a") as f:
-        data = json.load(f)
-        data.update({'url': r.url, 'title': title, 'question': question})
-        f.seek(0)
-        json.dump(data, f)
-      
-      f.close()
+
+    questions.append({
+        'url': question_url,
+        'title': title,
+        'question': question
+    })
 
     return r.status_code
   else:
@@ -60,10 +58,10 @@ def get_status(question_id):
     return "Error", question_url
 
 def do_something_with_result(status, url):
-  print (url, status)
+  print (url)
 
-save_filepath = sys.argv[1]
-  
+save_file_path = sys.argv[1]
+
 concurrent = 200
 questions = []
 q = queue.Queue(concurrent * 2)
@@ -74,9 +72,14 @@ for i in range(concurrent):
   thread.start()
 
 try:
-  for question_id in range(1, 1000):
+  for question_id in range(1, 100):
     q.put(question_id)
 
   q.join()
 except KeyboardInterrupt:
   sys.exit(1)
+
+with open(save_file_path, "w") as f:
+  json.dump(questions, f)
+
+f.close()
