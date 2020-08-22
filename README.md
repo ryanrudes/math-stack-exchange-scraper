@@ -5,7 +5,7 @@ Run like so: `python3 scrape.py json-filepath.json num-concurrent-threads num-qu
 
 I highly recommend running this on some faster hardware like Colab's GPU. It is far faster this way.
 
-If you are indeed using a Colab GPU with a high-RAM runtime, the optimal value for num-concurrent-threads is approximately 20. With these parameter, it scrapes nearly 70 questions per second.
+If you are indeed using a Colab GPU with a high-RAM runtime, the optimal value for `num-concurrent-threads` is approximately 20. With these parameter, it scrapes nearly 70 questions per second.
 
 It will save a .json file to the specified filepath in the following format:
 
