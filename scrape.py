@@ -61,6 +61,7 @@ def do_something_with_result(status, url):
   print (url)
 
 save_file_path, concurrent = sys.argv[1:3]
+concurrent = int(concurrent)
 
 questions = []
 q = queue.Queue(concurrent * 2)
