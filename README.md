@@ -1,11 +1,11 @@
 # Mathematics Stack Exchange Datascraper
 A Python data scraper for the Mathematics Stack Exchange
 
-Run like so: `python3 scrape.py json-filepath.json num-concurrent-threads num-questions-to-scrape`, ie. `python3 scrape.py stack-exchange.json 200 50000`
+Run like so: `python3 scrape.py json_filepath.json num_concurrent_threads num_questions_to_scrape`, ie. `python3 scrape.py stack-exchange.json 200 50000`
 
 I highly recommend running this on some faster hardware like Colab's GPU. It is far faster this way.
 
-If you are indeed using a Colab GPU with a high-RAM runtime, the optimal value for `num-concurrent-threads` is approximately 20. With these parameter, it scrapes nearly 70 questions per second.
+If you are indeed using a Colab GPU with a high-RAM runtime, the optimal value for `num_concurrent_threads` is approximately 20. With these parameter, it scrapes nearly 70 questions per second.
 
 It will save a .json file to the specified filepath in the following format:
 
@@ -37,7 +37,7 @@ You can then load in the data like this:
 ```
 import json
 
-with open("stack-exchange-questions (6).json", "r") as f:
+with open(json_filepath.json, "r") as f:
   data = json.load(f)
   
 f.close()
