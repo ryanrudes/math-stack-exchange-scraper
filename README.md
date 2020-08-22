@@ -32,3 +32,13 @@ It will save a .json file to the specified filepath in the following format:
   }, ...
 ]
 ```
+
+You can then load in the data like this:
+```
+import json
+
+with open("stack-exchange-questions (6).json", "r") as f:
+  data = json.load(f)
+  
+f.close()
+```
