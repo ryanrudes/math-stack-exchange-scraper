@@ -1,7 +1,7 @@
 # Mathematics Stack Exchange Datascraper
 A Python data scraper for the Mathematics Stack Exchange
 
-Run like so: `python3 scrape.py json-filepath.json num-concurrent-threads`, ie. `python3 scrape.py stack-exchange.json 200`
+Run like so: `python3 scrape.py json-filepath.json num-concurrent-threads num-questions-to-scrape`, ie. `python3 scrape.py stack-exchange.json 200 50000`
 
 I highly recommend running this on some faster hardware like Colab's GPU. It is far faster this way.
 
