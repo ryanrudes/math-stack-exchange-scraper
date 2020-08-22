@@ -4,6 +4,7 @@ import queue
 import requests
 from bs4 import BeautifulSoup
 import json
+from tqdm import tqdm
 
 def strip_whitespace(text):
   while "  " in text:
@@ -46,7 +47,6 @@ def do_work():
   while True:
     question_id = q.get()
     status, question_url = get_status(question_id)
-    do_something_with_result(status, question_url)
     q.task_done()
 
 def get_status(question_id):
@@ -57,11 +57,9 @@ def get_status(question_id):
   except:
     return "Error", question_url
 
-def do_something_with_result(status, url):
-  print (url)
-
-save_file_path, concurrent = sys.argv[1:3]
+save_file_path, concurrent, num_questions = sys.argv[1:3]
 concurrent = int(concurrent)
+num_questions = int(num_questions)
 
 questions = []
 q = queue.Queue(concurrent * 2)
@@ -72,7 +70,7 @@ for i in range(concurrent):
   thread.start()
 
 try:
-  for question_id in range(1, 100):
+  for question_id in tqdm(range(1, num_questions + 1)):
     q.put(question_id)
 
   q.join()
