@@ -42,3 +42,5 @@ with open(json_filepath.json, "r") as f:
   
 f.close()
 ```
+
+The .json file included in this repo is the result of scraping with `num_questions_to_scrape = 50000`. However, there aren't necessarily 50000 questions in the file due to the fact that many of the searched stack exchange urls did not exist.
