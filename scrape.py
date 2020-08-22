@@ -60,9 +60,8 @@ def get_status(question_id):
 def do_something_with_result(status, url):
   print (url)
 
-save_file_path = sys.argv[1]
+save_file_path, concurrent = sys.argv[1:3]
 
-concurrent = 200
 questions = []
 q = queue.Queue(concurrent * 2)
 
